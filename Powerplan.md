@@ -41,3 +41,19 @@ set_pg_strategy core_mesh -pattern {{pattern:mesh} {nets:VDD VSS}} \
   -extension {stop:innermost_ring} -core
   ```
 ```
+compile_pg -strategies core_mesh
+```
+```
+create_pg_std_cell_conn_pattern std_cell_rail -layers {M1} -rail_width 0.8
+```
+```
+set_pg_strategy rail_stratergy -core -pattern {{name:std_cell_rail} {nets:VDD VSS}}
+compile_pg -strategies rail_stratergy
+```
+
+```
+check_pg_connectivity
+check_pg_drc
+check_pg_missing_vias :
+```
+
